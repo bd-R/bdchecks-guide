@@ -1,0 +1,29 @@
+# Installing `bdDwC`
+
+***
+## Stable version from CRAN
+
+[comment]: <> (Need-To-Be-Updated!)
+
+```r
+install.packages("bdDwC")
+```
+
+## Development version from GitHub
+
+Windows users install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) first.
+
+```r
+install.packages("devtools")
+devtools::install_github("bd-R/bdDwC")
+```
+
+## Possible problems & solutions
+
+**<span style="color:red">[ TBA ]</span>**
+
+### ???
+TBA
+
+### ????
+TBA

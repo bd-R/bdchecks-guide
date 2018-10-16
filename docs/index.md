@@ -1,30 +1,34 @@
 --- 
 title: "`bdchecks` User Guide"
 author: "Authors: Tomer Gueta and Povilas Gibas"
-date: "built on 2018-09-05"
+date: "built on 2018-10-16"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [bib/book.bib, bib/DarwinCloud.bib, bib/DwC-paper.bib]
+bibliography: [bib/book.bib, bib/DarwinCloud.bib, bib/DwC-paper.bib, bib/Veiga-2017.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: bd-R/bdchecks-guide
 url: 'http\://bd-r.github.io/bdchecks-guide/'
-description: "Darwinize your data: field names conversion to Darwin Core (DwC) format"
+description: "Check your data: perform and manage various data checks for biodiversity data"
 ---
 
 # Introduction {-}
 
-`bdchecks` is an R package that supplies a Shiny app and a set of functions for standardizing field names according to the Darwin Core (DwC) format. `bdchecks` is a key element in the `bdverse`-- a collection of tools, that form a general framework for facilitating biodiversity science in R.
+`bdchecks` supplies a Shiny app and a set of functions to perform and manage various data checks for biodiversity data. `bdchecks` is part of the `bdverse`-- a collection of tools, that form a general framework for facilitating biodiversity science in R.
 
 ![bdchecks in the bdverse](img/bdchecks_bdverse.png "bdchecks-bdverse")
 
-#### What is the Darwin Core standard? {-}
+#### What are biodiversity data checks? {-}
 
-Darwin Core (DwC) is a global standard for publishing biodiversity data, whose goal is to facilitate the sharing of biodiversity information, by providing identifiers, labels, and definitions [@DwC-paper]. DwC was established as an evolving community-developed standard, by the Biodiversity Information Standards Working Group (www.tdwg.org). DwC is a library of definitions of common biodiversity data terms, each of which represents a field within the database. There are around 200 such fields (not including DwC extensions); a full set of the DwC terms with their descriptions is available in the Quick Reference Guide (http://rs.tdwg.org/dwc/terms). For more information see section [6][Learn more about Darwin Core].
+Data checks can include format checks, completeness checks, reasonableness checks, limit checks, etc. These processes usually result in flagging, documenting, and subsequent correcting or eliminating of suspect records. The checks must be specifically tailored around the structure of the data at hand, in our case, the Darwin Core standard. Ideally, a data check needs to hold its functionality and relevant metadata.
 
-#### Why it's important to "Darwinize" a dataset {-}
+#### What `bdchecks` can do for you? {-}
 
-Running the Darwinizer enables you to standardize many field names in your dataset -- and that allows the `bdverse` to handle data from various biodiversity portals, and lets you enjoy all of `bdvers` features, regardless of publishers variation in field names.
+`bdchecks` offers various features for various R users:
+
+* Using the Shiny app **inexperienced R users** can easily perform all data check and can easily filter the data accordingly. See [The shiny app] section.
+* **Experienced R users** can perform all data checks by utilizing few R functions form the command line or within an R script. See [Command line operations] section.
+* **Advanced R users** can even edit, add and manage their own collection of data checks, quite easily so. See [Data checks YAML file] section. 
 
 #### Fundings {-}
 
@@ -32,5 +36,5 @@ Running the Darwinizer enables you to standardize many field names in your datas
 
 [![](img/GSoC.png "GSoC website")](https://summerofcode.withgoogle.com/ target="_blank")  
 
-[See the GSoC project idea page](https://github.com/rstats-gsoc/gsoc2018/wiki/Darwinazing-biodiversity-data-in-R target="_blank")
+* <a href="https://github.com/rstats-gsoc/gsoc2018/wiki/Darwinazing-biodiversity-data-in-R" target="_blank">See the GSoC project idea page</a>
 

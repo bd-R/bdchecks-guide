@@ -3,34 +3,35 @@
 ***
 
 ## Load package
-Load the `bdDwC` package
+Load the `bdchecks` package
 ```r
-    library(bdDwC)
+    library(bdchecks)
 ```
 
-## Darwinizing a dataset
+## Perform data checks
 
-`bdDwC` contains Indian Reptile dataset `bdDwC:::dataReptiles`.
+`bdchecks` contains a dataset on bats named `dataBats`.
 
-
-The function to Darwinize a dataset is`darwinizeNames` (replace `bdDwC:::dataReptiles` with wanted dataset):
-
+To perform all data checks use `performDataCheck`:
 ```r
-result <- darwinizeNames(dataUser = bdDwC:::dataReptiles,
-                            dataDWC   = bdDwC:::dataDarwinCloud$data)
+resultDC <- bdchecks::performDataCheck(bdchecks::dataBats)
 ```
-You can replace `bdDwC:::dataReptiles` with your dataset
+replace `bdchecks::dataBats` with your own dataset name.
 
-Rename your dataset field names to Darwinized names using `renameUserData`:
 
+## Review performed checks
+
+See which data checks were performed:
 ```r
-renameUserData(bdDwC:::dataReptiles, result)
+resultDC
 ```
-## Updating [the Darwin Cloud dictionary]
 
-To get newest version of Darwin Cloud Data run:
-
+Review data checks result (% of records that passed, failed or have missing data)
 ```r
-downloadCloudData()
+# Nice summary
+summary_DC(resultDC)
 ```
-which will download data from the remote repository and extract field and standard names.
+## Filtering your data 
+**<span style="color:red">[ TBA ]</span>**
+
+

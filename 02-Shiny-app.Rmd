@@ -5,17 +5,10 @@
 ## Launching the app
 
 ```r
-library(bdDwC) # Uplaod package library
-runDwC() # Launch the app
+library(bdchecks) # Uplaod package library
+runbdchecks() # Launch the app
 ```
 
-## App overview
-
-[comment]: <> (Need-To-Be-Updated!)
-
-![bdDwC App Overview](img/bdDwC_Getting_started.png "The first screen")
-
- In the first screen, you'll need to upload or download your biodiversity data; choose dictionary and run the Darwinizer.
 
 ## Data upload
 
@@ -26,7 +19,7 @@ A CSV file or a Darwin Core Archive (DwC-A) zip file can be uploaded.
 
 [comment]: <> (Need-To-Be-Updated!)
 
-![Data upload from a local file](img/bdDwC_Up-local_file.png "bdDwC-app data-upload-local")
+![Data upload from a local file](img/bdchecks_Up-local_file.png "bdDwC-app data-upload-local")
  
 
 ### From an online database
@@ -41,66 +34,42 @@ Also, data can be retrieved directly from various online biodiversity databases.
 
 [comment]: <> (Need-To-Be-Updated!)
 
-![Data upload from online biodiversity databases](img/bdDwC_Up-database.png "bdDwC-app data-upload-database")
+![Data upload from online biodiversity databases](img/bdchecks_Up-database.png "bdchecks-app data-download-database")
+
+### Accept dataset
+[comment]: <> (Need-To-Be-Updated!)
+
+!['Accept dataset' to move to the next step ](img/bdchecks_accept_dataset.png "bdchecks-app accept-dataset")
+
+## Choose data checks
+[comment]: <> (Need-To-Be-Updated!)
+
+![Choose a data check by checking its box ](img/bdchecks_choose_DC.png "bdchecks-app data-choose-DC")
+
+![Hovering over a data check name shows a short description](img/bdchecks_hover.png "bdchecks-app DC_hover")
 
 
-## Dictionaries
 
-A dictionary is a key component when Darwinizing a dataset. It's basically a lookup table that lists a possible variation of field name and it corresponding DwC name.
+## Checks results and data filtering
 
-
-### The Darwin Cloud dictionary
-
-The Darwin Cloud dictionary [@DarwinCloud], is a lookup table that accumulates different variations in DwC field names from different publishers. This valuable and critical dictionary was created and is maintained by the Kurator project (http://kurator.acis.ufl.edu/kurator-web/), which provides workflow tools for data quality improvement of biodiversity data, via a user-friendly web interface. The development of bdDwC was inspired by [Kurator's own Darwinizer](https://github.com/kurator-org/kurator-validation/wiki/CSV-File-Darwinizer target="_blank").
-
-#### Updating the Darwin Cloud {-}
-
-It's recommended to update the Darwin Cloud file. This can be done easily by clicking the **Update DC** button.
+### Overwiew
 
 [comment]: <> (Need-To-Be-Updated!)
 
-![Updating the Darwin Cloud](img/bdDwC_update-DC.png "bdDwC-app bdDwC_update-DC")
+![Results page overview](img/bdchecks_DC_results_overview.png "bdchecks-app results_overview")
 
-### Your own dictionary
-
-It's also possible to add your own dictionary by simply creating a CSV file with two columns, one for the Field Names and one for the Standard Names.
+### Filtering the data based on the results
 
 [comment]: <> (Need-To-Be-Updated!)
 
-![Uploading your own dictionary](img/bdDwC_personal_dictionary.png "bdDwC-app personal dictionary")
+![Choose specific results to filter out](img/bdchecks_filtering_table.png "bdchecks-app results_filter")
 
-## Darwinizing your dataset
-
-Once a dataset is uploaded, the 'Submit to Darwinizer' button is activated, Clicking it will Darwinize the dataset.
-
-[comment]: <> (Need-To-Be-Updated!)
-
-![Submit to Darwinizer button](img/bdDwC_Submit.png "bdDwC-app Submit button")
-
-## Darwinizer results
-
-### Results page overwiew
-
-[comment]: <> (Need-To-Be-Updated!)
-
-![Darwinizer results](img/bdDwC_Darwinizer_results.png "bdDwC-app Darwinizer results")
-
-Manually renaming field names can be done very easily, just choose the two corresponding fields and click the Rename button. 
-
-[comment]: <> (Need-To-Be-Updated!)
-
-![Manually renaming fields](img/bdDwC_Manual_rename.png "bdDwC-app Manual renaming")
-
-Hovering over a DwC standard name will display its description.
+![Filter the data and download your filtered data](img/bdchecks_filtering_action.png "bdchecks-app filter-action")
 
 
-
-## Download your Darwinized data
-
-[comment]: <> (Need-To-Be-Updated!)
 
 ## Closing the app
-Just close the app browser tab, and the R session will be terminated. To reopen it run in the R Console `runDwC()`.
+Just close the app browser tab, and the R session will be terminated. To reopen it run in the R Console `runbdchecks()`.
 
 ## References
 

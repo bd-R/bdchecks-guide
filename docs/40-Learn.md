@@ -1,15 +1,13 @@
-# Learn more about Darwin Core
+# Learn more
 
 ***
 
-* **[The Darwin Core Questions & Answers Site](https://github.com/tdwg/dwc-qa target="_blank")**
+* **<a href="https://www.tdwg.org/community/bdq/tg-2/" target="_blank">TDWG's data quality tests and assertions Task Group</a>**
 
-* **[Darwin Core Hour webinar series](https://github.com/tdwg/dwc-qa/wiki/Webinars target="_blank")**
+* **<a href="https://docs.google.com/spreadsheets/d/1uwnUtcMSe88AytUt_mSepeLTz54tMvV9llO2pBnObhE" target="_blank">Core suite of tests and assertions</a>**
 
-* **[The Darwin Core Questions & Answers wiki](https://github.com/tdwg/dwc-qa/wiki target="_blank")**
+* **<a href="https://github.com/tdwg/bdq/projects/2" target="_blank">Core tests and assertions as GitHub issues</a>**
 
-* **[GBIF: What is Darwin Core, and why does it matter?](https://www.gbif.org/darwin-core target="_blank")**
-
-* **[Darwin Core: An Evolving Community-Developed Biodiversity Data Standard](https://doi.org/10.1371/journal.pone.0029715 target="_blank") [@DwC-paper] **
+* **<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0178731" target="_blank">A conceptual framework for quality assessment and management of biodiversity data</a> [@Veiga2017] **
 
 #### References {-}

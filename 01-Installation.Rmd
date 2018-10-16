@@ -1,13 +1,4 @@
-# Installing `bdDwC`
-
-***
-## Stable version from CRAN
-
-[comment]: <> (Need-To-Be-Updated!)
-
-```r
-install.packages("bdDwC")
-```
+# Installing `bdchecks`
 
 ## Development version from GitHub
 
@@ -15,10 +6,18 @@ Windows users install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) f
 
 ```r
 install.packages("devtools")
-devtools::install_github("bd-R/bdDwC")
+devtools::install_github("bd-R/bdchecks")
 ```
 
-## Possible problems & solutions
+## <span style="color:red">Very soon: a stable version from CRAN</span>
+
+[comment]: <> (Need-To-Be-Updated!)
+
+```r
+install.packages("bdchecks")
+```
+
+## Possible installation problems & solutions
 
 **<span style="color:red">[ TBA ]</span>**
 
@@ -26,4 +25,4 @@ devtools::install_github("bd-R/bdDwC")
 TBA
 
 ### ????
-TBA
+TBA***

@@ -1,10 +1,73 @@
-# Checks YAML file
+# Data checks YAML file
 
 ***
 
-**<span style="color:red">[ TBA ]</span>**
+The YMAL file holds the code and metadata of all data checks. The checks are derived from a core suite of tests and assertions being developed by <a href="https://www.tdwg.org/" target="_blank">TDWG</a>'s <a href="https://www.tdwg.org/community/bdq/" target="_blank">Biodiversity Data Quality</a> **<a href="https://www.tdwg.org/community/bdq/tg-2/" target="_blank">Task Group 2 ( Data Quality Tests and Assertions)</a>**. More information and links can be found in the [Learn more] section.
 
+## Data check example 
+```ymal
+DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
+  name: countryMismatch
+  meta:
+    Description:
+      Main: Check if given country match given country code.
+      InputQuestion: Does country and country code match?
+      Example:
+        Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
+          not match
+        Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+        InputFail: country=Australia, countryCode=4
+        InputPass: country=Australia, countryCode=AU
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,iso,country
+      guid: b23110e7-1be7-444a-a677-cdee0cf4330c
+    Flags:
+      Severity: Warning
+      Warning: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: |
+      get.Country($countryCode) == $country
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: country,countryCode
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages: rgbif 
+      Data: isocodes$name,isocodes$code
+  Functionality: |
+      FUNC <- function() {
+          result <- sapply(seq_along(TARGET1), function(i) {
+              if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
+                  NA
+              } else {
+                  which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+              }
+          })
+          result <- unlist(result)
+          return(result)
+       }
+```
 
-[comment]: <> (I'm thinking to show the Darwinizer app with four distinct datasets)
+## Manage your own data checks
+After adding/ removing/ editing the YAML file, you can load data checks into R using `getDC()` function. 
+```r
+DC <- getDC("path to your YAML file")
+```
 
-
+You can also export data checks from your YAML file to .rda and roxygen2 comments.
+```r
+exportDC("path to your YAML file")
+```

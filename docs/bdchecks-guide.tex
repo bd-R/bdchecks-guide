@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{built on 2018-09-05}
+    \date{built on 2018-10-16}
 
 \usepackage{booktabs}
 
@@ -153,11 +153,10 @@
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-\texttt{bdchecks} is an R package that supplies a Shiny app and a set of
-functions for standardizing field names according to the Darwin Core
-(DwC) format. \texttt{bdchecks} is a key element in the
-\texttt{bdverse}-- a collection of tools, that form a general framework
-for facilitating biodiversity science in R.
+\texttt{bdchecks} supplies a Shiny app and a set of functions to perform
+and manage various data checks for biodiversity data. \texttt{bdchecks}
+is part of the \texttt{bdverse}-- a collection of tools, that form a
+general framework for facilitating biodiversity science in R.
 
 \begin{figure}
 \centering
@@ -165,31 +164,42 @@ for facilitating biodiversity science in R.
 \caption{bdchecks in the bdverse}
 \end{figure}
 
-\subsubsection*{What is the Darwin Core
-standard?}\label{what-is-the-darwin-core-standard}
-\addcontentsline{toc}{subsubsection}{What is the Darwin Core standard?}
+\subsubsection*{What are biodiversity data
+checks?}\label{what-are-biodiversity-data-checks}
+\addcontentsline{toc}{subsubsection}{What are biodiversity data checks?}
 
-Darwin Core (DwC) is a global standard for publishing biodiversity data,
-whose goal is to facilitate the sharing of biodiversity information, by
-providing identifiers, labels, and definitions \citep{DwC-paper}. DwC
-was established as an evolving community-developed standard, by the
-Biodiversity Information Standards Working Group (www.tdwg.org). DwC is
-a library of definitions of common biodiversity data terms, each of
-which represents a field within the database. There are around 200 such
-fields (not including DwC extensions); a full set of the DwC terms with
-their descriptions is available in the Quick Reference Guide
-(\url{http://rs.tdwg.org/dwc/terms}). For more information see section
-\protect\hyperlink{learn-more-about-darwin-core}{6}.
+Data checks can include format checks, completeness checks,
+reasonableness checks, limit checks, etc. These processes usually result
+in flagging, documenting, and subsequent correcting or eliminating of
+suspect records. The checks must be specifically tailored around the
+structure of the data at hand, in our case, the Darwin Core standard.
+Ideally, a data check needs to hold its functionality and relevant
+metadata.
 
-\subsubsection*{\texorpdfstring{Why it's important to ``Darwinize'' a
-dataset}{Why it's important to Darwinize a dataset}}\label{why-its-important-to-darwinize-a-dataset}
-\addcontentsline{toc}{subsubsection}{Why it's important to ``Darwinize''
-a dataset}
+\subsubsection*{\texorpdfstring{What \texttt{bdchecks} can do for
+you?}{What bdchecks can do for you?}}\label{what-bdchecks-can-do-for-you}
+\addcontentsline{toc}{subsubsection}{What \texttt{bdchecks} can do for
+you?}
 
-Running the Darwinizer enables you to standardize many field names in
-your dataset -- and that allows the \texttt{bdverse} to handle data from
-various biodiversity portals, and lets you enjoy all of \texttt{bdvers}
-features, regardless of publishers variation in field names.
+\texttt{bdchecks} offers various features for various R users:
+
+\begin{itemize}
+\tightlist
+\item
+  Using the Shiny app \textbf{inexperienced R users} can easily perform
+  all data check and can easily filter the data accordingly. See
+  \protect\hyperlink{the-shiny-app}{The shiny app} section.
+\item
+  \textbf{Experienced R users} can perform all data checks by utilizing
+  few R functions form the command line or within an R script. See
+  \protect\hyperlink{command-line-operations}{Command line operations}
+  section.
+\item
+  \textbf{Advanced R users} can even edit, add and manage their own
+  collection of data checks, quite easily so. See
+  \protect\hyperlink{data-checks-yaml-file}{Data checks YAML file}
+  section.
+\end{itemize}
 
 \subsubsection*{Fundings}\label{fundings}
 \addcontentsline{toc}{subsubsection}{Fundings}
@@ -202,21 +212,14 @@ features, regardless of publishers variation in field names.
 
 \href{https://summerofcode.withgoogle.com/\%20target=\%22_blank\%22}{\includegraphics{img/GSoC.png}}
 
-\href{https://github.com/rstats-gsoc/gsoc2018/wiki/Darwinazing-biodiversity-data-in-R\%20target=\%22_blank\%22}{See
-the GSoC project idea page}
+\begin{itemize}
+\tightlist
+\item
+  See the GSoC project idea page
+\end{itemize}
 
 \chapter{\texorpdfstring{Installing
-\texttt{bdDwC}}{Installing bdDwC}}\label{installing-bddwc}
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\section{Stable version from CRAN}\label{stable-version-from-cran}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bdDwC"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\texttt{bdchecks}}{Installing bdchecks}}\label{installing-bdchecks}
 
 \section{Development version from
 GitHub}\label{development-version-from-github}
@@ -227,12 +230,21 @@ Windows users install
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
-\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"bd-R/bdDwC"}\NormalTok{)}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"bd-R/bdchecks"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\section{Possible problems \&
-solutions}\label{possible-problems-solutions}
+\section{\texorpdfstring{{Very soon: a stable version from
+CRAN}}{Very soon: a stable version from CRAN}}\label{very-soon-a-stable-version-from-cran}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bdchecks"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Possible installation problems \&
+solutions}\label{possible-installation-problems-solutions}
 
 \textbf{{{[} TBA {]}}}
 
@@ -242,9 +254,10 @@ TBA
 
 \subsection{????}\label{section-1}
 
-TBA
+TBA***
 
-\chapter{The shiny app}\label{the-shiny-app}
+\hypertarget{the-shiny-app}{\chapter{The shiny
+app}\label{the-shiny-app}}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -252,21 +265,10 @@ TBA
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(bdDwC) }\CommentTok{# Uplaod package library}
-\KeywordTok{runDwC}\NormalTok{() }\CommentTok{# Launch the app}
+\KeywordTok{library}\NormalTok{(bdchecks) }\CommentTok{# Uplaod package library}
+\KeywordTok{runbdchecks}\NormalTok{() }\CommentTok{# Launch the app}
 \end{Highlighting}
 \end{Shaded}
-
-\section{App overview}\label{app-overview}
-
-\begin{figure}
-\centering
-\includegraphics{img/bdDwC_Getting_started.png}
-\caption{bdDwC App Overview}
-\end{figure}
-
-In the first screen, you'll need to upload or download your biodiversity
-data; choose dictionary and run the Darwinizer.
 
 \section{Data upload}\label{data-upload}
 
@@ -276,7 +278,7 @@ A CSV file or a Darwin Core Archive (DwC-A) zip file can be uploaded.
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_Up-local_file.png}
+\includegraphics{img/bdchecks_Up-local_file.png}
 \caption{Data upload from a local file}
 \end{figure}
 
@@ -301,154 +303,221 @@ databases. You need only to:
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_Up-database.png}
+\includegraphics{img/bdchecks_Up-database.png}
 \caption{Data upload from online biodiversity databases}
 \end{figure}
 
-\section{Dictionaries}\label{dictionaries}
-
-A dictionary is a key component when Darwinizing a dataset. It's
-basically a lookup table that lists a possible variation of field name
-and it corresponding DwC name.
-
-\hypertarget{the-darwin-cloud-dictionary}{\subsection{The Darwin Cloud
-dictionary}\label{the-darwin-cloud-dictionary}}
-
-The Darwin Cloud dictionary \citep{DarwinCloud}, is a lookup table that
-accumulates different variations in DwC field names from different
-publishers. This valuable and critical dictionary was created and is
-maintained by the Kurator project
-(\url{http://kurator.acis.ufl.edu/kurator-web/}), which provides
-workflow tools for data quality improvement of biodiversity data, via a
-user-friendly web interface. The development of bdDwC was inspired by
-\href{https://github.com/kurator-org/kurator-validation/wiki/CSV-File-Darwinizer\%20target=\%22_blank\%22}{Kurator's
-own Darwinizer}.
-
-\subsubsection*{Updating the Darwin
-Cloud}\label{updating-the-darwin-cloud}
-\addcontentsline{toc}{subsubsection}{Updating the Darwin Cloud}
-
-It's recommended to update the Darwin Cloud file. This can be done
-easily by clicking the \textbf{Update DC} button.
+\subsection{Accept dataset}\label{accept-dataset}
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_update-DC.png}
-\caption{Updating the Darwin Cloud}
+\includegraphics{img/bdchecks_accept_dataset.png}
+\caption{`Accept dataset' to move to the next step}
 \end{figure}
 
-\subsection{Your own dictionary}\label{your-own-dictionary}
-
-It's also possible to add your own dictionary by simply creating a CSV
-file with two columns, one for the Field Names and one for the Standard
-Names.
+\section{Choose data checks}\label{choose-data-checks}
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_personal_dictionary.png}
-\caption{Uploading your own dictionary}
+\includegraphics{img/bdchecks_choose_DC.png}
+\caption{Choose a data check by checking its box}
 \end{figure}
-
-\section{Darwinizing your dataset}\label{darwinizing-your-dataset}
-
-Once a dataset is uploaded, the `Submit to Darwinizer' button is
-activated, Clicking it will Darwinize the dataset.
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_Submit.png}
-\caption{Submit to Darwinizer button}
+\includegraphics{img/bdchecks_hover.png}
+\caption{Hovering over a data check name shows a short description}
 \end{figure}
 
-\section{Darwinizer results}\label{darwinizer-results}
+\section{Checks results and data
+filtering}\label{checks-results-and-data-filtering}
 
-\subsection{Results page overwiew}\label{results-page-overwiew}
+\subsection{Overwiew}\label{overwiew}
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_Darwinizer_results.png}
-\caption{Darwinizer results}
+\includegraphics{img/bdchecks_DC_results_overview.png}
+\caption{Results page overview}
 \end{figure}
 
-Manually renaming field names can be done very easily, just choose the
-two corresponding fields and click the Rename button.
+\subsection{Filtering the data based on the
+results}\label{filtering-the-data-based-on-the-results}
 
 \begin{figure}
 \centering
-\includegraphics{img/bdDwC_Manual_rename.png}
-\caption{Manually renaming fields}
+\includegraphics{img/bdchecks_filtering_table.png}
+\caption{Choose specific results to filter out}
 \end{figure}
 
-Hovering over a DwC standard name will display its description.
-
-\section{Download your Darwinized
-data}\label{download-your-darwinized-data}
+\begin{figure}
+\centering
+\includegraphics{img/bdchecks_filtering_action.png}
+\caption{Filter the data and download your filtered data}
+\end{figure}
 
 \section{Closing the app}\label{closing-the-app}
 
 Just close the app browser tab, and the R session will be terminated. To
-reopen it run in the R Console \texttt{runDwC()}.
+reopen it run in the R Console \texttt{runbdchecks()}.
 
 \section{References}\label{references}
 
-\chapter{Command line operations}\label{command-line-operations}
+\hypertarget{command-line-operations}{\chapter{Command line
+operations}\label{command-line-operations}}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 \section{Load package}\label{load-package}
 
-Load the \texttt{bdDwC} package
+Load the \texttt{bdchecks} package
 
 \begin{Shaded}
 \begin{Highlighting}[]
-    \KeywordTok{library}\NormalTok{(bdDwC)}
+    \KeywordTok{library}\NormalTok{(bdchecks)}
 \end{Highlighting}
 \end{Shaded}
 
-\section{Darwinizing a dataset}\label{darwinizing-a-dataset}
+\section{Perform data checks}\label{perform-data-checks}
 
-\texttt{bdDwC} contains Indian Reptile dataset
-\texttt{bdDwC:::dataReptiles}.
+\texttt{bdchecks} contains a dataset on bats named \texttt{dataBats}.
 
-The function to Darwinize a dataset is\texttt{darwinizeNames} (replace
-\texttt{bdDwC:::dataReptiles} with wanted dataset):
+To perform all data checks use \texttt{performDataCheck}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{result <-}\StringTok{ }\KeywordTok{darwinizeNames}\NormalTok{(}\DataTypeTok{dataUser =}\NormalTok{ bdDwC}\OperatorTok{:::}\NormalTok{dataReptiles,}
-                            \DataTypeTok{dataDWC   =}\NormalTok{ bdDwC}\OperatorTok{:::}\NormalTok{dataDarwinCloud}\OperatorTok{$}\NormalTok{data)}
+\NormalTok{resultDC <-}\StringTok{ }\NormalTok{bdchecks}\OperatorTok{::}\KeywordTok{performDataCheck}\NormalTok{(bdchecks}\OperatorTok{::}\NormalTok{dataBats)}
 \end{Highlighting}
 \end{Shaded}
 
-You can replace \texttt{bdDwC:::dataReptiles} with your dataset
+replace \texttt{bdchecks::dataBats} with your own dataset name.
 
-Rename your dataset field names to Darwinized names using
-\texttt{renameUserData}:
+\section{Review performed checks}\label{review-performed-checks}
+
+See which data checks were performed:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{renameUserData}\NormalTok{(bdDwC}\OperatorTok{:::}\NormalTok{dataReptiles, result)}
+\NormalTok{resultDC}
 \end{Highlighting}
 \end{Shaded}
 
-\section{\texorpdfstring{Updating
-\protect\hyperlink{the-darwin-cloud-dictionary}{the Darwin Cloud
-dictionary}}{Updating the Darwin Cloud dictionary}}\label{updating-the-darwin-cloud-dictionary}
-
-To get newest version of Darwin Cloud Data run:
+Review data checks result (\% of records that passed, failed or have
+missing data)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{downloadCloudData}\NormalTok{()}
+\CommentTok{# Nice summary}
+\KeywordTok{summary_DC}\NormalTok{(resultDC)}
 \end{Highlighting}
 \end{Shaded}
 
-which will download data from the remote repository and extract field
-and standard names.
+\section{Filtering your data}\label{filtering-your-data}
 
-\chapter{Checks YAML file}\label{checks-yaml-file}
+\textbf{{{[} TBA {]}}}
+
+\hypertarget{data-checks-yaml-file}{\chapter{Data checks YAML
+file}\label{data-checks-yaml-file}}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+The YMAL file holds the code and metadata of all data checks. The checks
+are derived from a core suite of tests and assertions being developed by
+TDWG's Biodiversity Data Quality \textbf{Task Group 2 ( Data Quality
+Tests and Assertions)}. More information and links can be found in the
+\protect\hyperlink{learn-more}{Learn more} section.
+
+\section{Data check example}\label{data-check-example}
+
+\begin{verbatim}
+DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
+  name: countryMismatch
+  meta:
+    Description:
+      Main: Check if given country match given country code.
+      InputQuestion: Does country and country code match?
+      Example:
+        Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
+          not match
+        Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+        InputFail: country=Australia, countryCode=4
+        InputPass: country=Australia, countryCode=AU
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,iso,country
+      guid: b23110e7-1be7-444a-a677-cdee0cf4330c
+    Flags:
+      Severity: Warning
+      Warning: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: |
+      get.Country($countryCode) == $country
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: country,countryCode
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages: rgbif 
+      Data: isocodes$name,isocodes$code
+  Functionality: |
+      FUNC <- function() {
+          result <- sapply(seq_along(TARGET1), function(i) {
+              if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
+                  NA
+              } else {
+                  which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+              }
+          })
+          result <- unlist(result)
+          return(result)
+       }
+\end{verbatim}
+
+\section{Manage your own data checks}\label{manage-your-own-data-checks}
+
+After adding/ removing/ editing the YAML file, you can load data checks
+into R using \texttt{getDC()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DC <-}\StringTok{ }\KeywordTok{getDC}\NormalTok{(}\StringTok{"path to your YAML file"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You can also export data checks from your YAML file to .rda and roxygen2
+comments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exportDC}\NormalTok{(}\StringTok{"path to your YAML file"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{\texorpdfstring{\texttt{bdchecks}
+architecture}{bdchecks architecture}}\label{bdchecks-architecture}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{The overall architecture}\label{the-overall-architecture}
+
+\textbf{{{[} TBA {]}}}
+
+\section{Component 1****}\label{component-1}
+
+\textbf{{{[} TBA {]}}}
+
+\section{Component 2****}\label{component-2}
 
 \textbf{{{[} TBA {]}}}
 
@@ -460,71 +529,64 @@ Loading\ldots{}
 
 \section{Report a bug}\label{report-a-bug}
 
-Submit an issue at \url{https://github.com/bd-R/bdDwC/issues}
+Submit an issue at \url{https://github.com/bd-R/bdchecks/issues}
 
 \section{Contribute}\label{contribute}
 
-Contribute: \url{https://github.com/bd-R/bdDwC}
+Contribute: \url{https://github.com/bd-R/bdchecks}
 
 Join: \url{https://bd-r-group.slack.com}
 
-\chapter{\texorpdfstring{\texttt{bdDwC}
-citation}{bdDwC citation}}\label{bddwc-citation}
+\chapter{\texorpdfstring{\texttt{bdchecks}
+citation}{bdchecks citation}}\label{bdchecks-citation}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{citation}\NormalTok{(}\StringTok{"bdDwC"}\NormalTok{)}
+\KeywordTok{citation}\NormalTok{(}\StringTok{"bdchecks"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-## To cite package 'bdDwC' in publications use:
+## To cite package 'bdchecks' in publications use:
 ## 
 ##   Povilas Gibas, Tomer Gueta, Vijay Barve, Thiloshon Nagarajah and
-##   Yohay Carmel (2018). bdDwC: Darwinizer: Darwin Core (DwC) Field
-##   Names Standardization. R package version 0.1.15.
+##   Yohay Carmel (2018). bdchecks: Biodiversity Data Checks. R
+##   package version 0.1.2. https://github.com/bd-R/bdchecks
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
 ##   @Manual{,
-##     title = {bdDwC: Darwinizer: Darwin Core (DwC) Field Names Standardization},
+##     title = {bdchecks: Biodiversity Data Checks},
 ##     author = {Povilas Gibas and Tomer Gueta and Vijay Barve and Thiloshon Nagarajah and Yohay Carmel},
 ##     year = {2018},
-##     note = {R package version 0.1.15},
+##     note = {R package version 0.1.2},
+##     url = {https://github.com/bd-R/bdchecks},
 ##   }
 \end{verbatim}
 
-\hypertarget{learn-more-about-darwin-core}{\chapter{Learn more about
-Darwin Core}\label{learn-more-about-darwin-core}}
+\hypertarget{learn-more}{\chapter{Learn more}\label{learn-more}}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 \begin{itemize}
 \item
-  \textbf{\href{https://github.com/tdwg/dwc-qa\%20target=\%22_blank\%22}{The
-  Darwin Core Questions \& Answers Site}}
+  \textbf{TDWG's data quality tests and assertions Task Group}
 \item
-  \textbf{\href{https://github.com/tdwg/dwc-qa/wiki/Webinars\%20target=\%22_blank\%22}{Darwin
-  Core Hour webinar series}}
+  \textbf{Core suite of tests and assertions}
 \item
-  \textbf{\href{https://github.com/tdwg/dwc-qa/wiki\%20target=\%22_blank\%22}{The
-  Darwin Core Questions \& Answers wiki}}
+  \textbf{Core tests and assertions as GitHub issues}
 \item
-  \textbf{\href{https://www.gbif.org/darwin-core\%20target=\%22_blank\%22}{GBIF:
-  What is Darwin Core, and why does it matter?}}
-\item
-  \textbf{\href{https://doi.org/10.1371/journal.pone.0029715\%20target=\%22_blank\%22}{Darwin
-  Core: An Evolving Community-Developed Biodiversity Data Standard}
-  \citep{DwC-paper} }
+  \textbf{A conceptual framework for quality assessment and management
+  of biodiversity data \citep{Veiga2017} }
 \end{itemize}
 
 \subsubsection*{References}\label{references-1}
 \addcontentsline{toc}{subsubsection}{References}
 
-\bibliography{bib/book.bib,bib/DarwinCloud.bib,bib/DwC-paper.bib}
+\bibliography{bib/book.bib,bib/DarwinCloud.bib,bib/DwC-paper.bib,bib/Veiga-2017.bib}
 
 
 \end{document}
